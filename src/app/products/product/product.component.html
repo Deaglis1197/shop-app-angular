@@ -1,0 +1,20 @@
+<div class="row">
+  <div class="card mx-2" style="width: 18rem" *ngIf="product; else noProduct">
+    <img
+      class="card-img-top"
+      src="/assets/images/{{ product.imageUrl }}"
+      alt="Card image cap"
+    />
+    <div class="card-body">
+      <h5 class="card-title">{{ product.name }}</h5>
+      <p class="card-text">
+        {{ product.description }}
+      </p>
+      <p class="card-text">price: {{ product.price }}</p>
+    </div>
+  </div>
+</div>
+
+<ng-template #noProduct>
+  <div class="alert alert-warning">Don't find product</div>
+</ng-template>

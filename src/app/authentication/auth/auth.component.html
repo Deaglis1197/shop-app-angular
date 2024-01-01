@@ -1,0 +1,46 @@
+<h3>{{ isLoginMode ? "Login" : "Create Account" }}</h3>
+
+<form #form="ngForm" (ngSubmit)="handleAuth(form)">
+  <div class="alert alert-danger" *ngIf="error">
+      <span class="sr-only">{{error}}</span>
+  </div>
+  <div class="mb-3">
+    <label for="" class="form-label">E-mail</label>
+    <input
+      type="email"
+      required
+      email
+      ngModel
+      name="email"
+      id="email"
+      class="form-control"
+    />
+  </div>
+  <div class="mb-3">
+    <label for="password" class="form-label">Password</label>
+    <input
+      type="password"
+      ngModel
+      minlength="6"
+      name="password"
+      id="password"
+      class="form-control"
+    />
+  </div>
+  <div class="d-grid gap-2">
+    <button type="submit" class="btn btn-primary" [disabled]="form.invalid">
+      {{ isLoginMode ? "Login" : "Create Account" }}
+    </button>
+    <button
+      type="button"
+      class="btn btn-outline-primary"
+      (click)="changeMode()"
+    >
+      Toggle
+    </button>
+  </div>
+
+  <div class="spinner-border text-primary" role="status" *ngIf="isLoading">
+    <span class="sr-only"></span>
+  </div>
+</form>
